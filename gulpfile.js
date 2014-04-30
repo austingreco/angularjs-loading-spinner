@@ -7,7 +7,7 @@ var $ = require('gulp-load-plugins')();
 
 // Scripts
 gulp.task('scripts', function() {
-	return gulp.src('app/scripts/**/*.js')
+	return gulp.src('src/scripts/**/*.js')
 		.pipe($.jshint('.jshintrc'))
 		.pipe($.jshint.reporter('default'))
 		.pipe($.size());
@@ -20,7 +20,7 @@ gulp.task('default', function() {
 
 // Connect
 gulp.task('connect', $.connect.server({
-	root: ['app'],
+	root: ['src'],
 	port: 9000,
 	livereload: true
 }));
@@ -29,16 +29,16 @@ gulp.task('connect', $.connect.server({
 gulp.task('watch', ['connect'], function() {
 	gulp.start('scripts');
 
-	// Watch for changes in `app` folder
+	// Watch for changes in `src` folder
 	gulp.watch([
-		'app/*.html',
-		'app/scripts/**/*.js',
-		'app/styles/**/*.css'
+		'src/*.html',
+		'src/scripts/**/*.js',
+		'src/styles/**/*.css'
 	], function(event) {
 		return gulp.src(event.path)
 			.pipe($.connect.reload());
 	});
 
 	// Watch .js files
-	gulp.watch('app/scripts/**/*.js', ['scripts']);
+	gulp.watch('src/scripts/**/*.js', ['scripts']);
 });
