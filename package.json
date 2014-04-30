@@ -1,0 +1,21 @@
+{
+  "name": "angularjs-loading-spinner",
+  "version": "0.0.0",
+  "homepage": "https://github.com/austingreco/angularjs-loading-spinner",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.5.0",
+    "gulp-load-plugins": "~0.3.0",
+    "gulp-util": "~2.2.9",
+    "gulp-jshint": "~1.4.0",
+    "gulp-size": "~0.1.2",
+    "gulp-connect": "~1.0.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "npm install && bower install && gulp"
+  }
+}

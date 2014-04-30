@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<title>angularjs-loading-spinner</title>
+		<link rel="stylesheet" href="styles/spinner.css">
+		<style>
+		</style>
+	</head>
+	<body ng-app="test" ng-controller="MainCtrl">
+		<button ng-click="getTweets()">Get Tweets</button>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="station in stations">
+					<td>{{station.id}}</td>
+					<td>{{station.name}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="spinner" ng-show="loading"></div>
+
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="scripts/main.js"></script>
+		<script src="scripts/spinner.js"></script>
+	</body>
+</html>
