@@ -1,27 +1,29 @@
 'use strict';
 
 angular.module( 'spinner', [] )
-.factory( 'loadingSpinnerInterceptor', function( $rootScope, $q ) {
-	var pendingRequests = 0;
-	function pendingRequest( modifier ) {
-		pendingRequests += modifier;
-		$rootScope.loading = pendingRequests > 0;
+.factory( 'loadingSpinnerInterceptor', function( $rootScope, $q, $injector, $timeout ) {
+	var $http;
+	function pendingRequests() {
+		$http = $http || $injector.get('$http');
+		$timeout( function() {
+			$rootScope.loading = $http.pendingRequests.length > 0;
+		});
 	}
 	return {
 		request: function( config ) {
-			pendingRequest( 1 );
+			pendingRequests();
 			return config || $q.when( config );
 		},
 		requestError: function( rejection ) {
-			pendingRequest( -1 );
+			pendingRequests();
 			return $q.reject( rejection );
 		},
 		response: function( response ) {
-			pendingRequest( -1 );
+			pendingRequests();
 			return response || $q.when( response );
 		},
 		responseError: function( rejection ) {
-			pendingRequest( -1 );
+			pendingRequests();
 			return $q.reject( rejection );
 		}
 	};
