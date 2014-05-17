@@ -1,7 +1,13 @@
 angularjs-loading-spinner
 =========================
 
-Simple loading animation using AngularJS's $http interceptors.
+Very simple loading animation using AngularJS's $http interceptors.
+
+Right now it simply sets `$rootScope.loading = true` while a request is in progress and `false` when not. Then you can show or hide an element based on this value:
+
+```
+<div class="loading-animation" ng-show="loading"></div>
+```
 
 ## Running
 
@@ -11,7 +17,7 @@ Just run `npm start` after cloning the repo. You will need [Gulp](http://gulpjs.
 
 CSS for the loading animation is from [SpinKit](http://tobiasahlin.com/spinkit/).
 
-## Copyright and license
+## License
 
 Copyright (c) 2014 [Austin Greco](http://austingreco.com)
 
