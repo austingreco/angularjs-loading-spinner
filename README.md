@@ -1,4 +1,4 @@
-angularjs-loading-spinner
+angularjs-loading-spinner [![Build Status](https://travis-ci.org/austingreco/angularjs-loading-spinner.svg?branch=master)](https://travis-ci.org/austingreco/angularjs-loading-spinner)
 =========================
 
 Very simple loading animation using AngularJS's $http interceptors.
