@@ -132,12 +132,15 @@ var testFiles = [
 ];
 
 gulp.task('test', function() {
-	// Be sure to return the stream
 	return gulp.src(testFiles)
 		.pipe(karma({
 			configFile: 'test/karma.conf.js',
-			action: 'run'
+			action: 'run',
+			singleRun: true
 		}))
+		.on('end', function(code) {
+			process.exit(code);
+		})
 		.on('error', function(err) {
 			// Make sure failed tests cause gulp to exit non-zero
 			throw err;
@@ -149,5 +152,14 @@ gulp.task('default', function() {
 		.pipe(karma({
 			configFile: 'test/karma.conf.js',
 			action: 'watch'
-		}));
+		}))
+		.on('end', function() {
+			process.exit(code);
+		})
+		.on('error', function(err) {
+			// Make sure failed tests cause gulp to exit non-zero
+			throw err;
+		});
 });
+
+

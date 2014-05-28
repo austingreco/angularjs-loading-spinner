@@ -56,16 +56,24 @@ module.exports = function(config) {
 
 		// start these browsers
 		// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-		browsers: ['Chrome'],
+		browsers: ['PhantomJS'],
 
 		plugins : [
-			'karma-chrome-launcher',
-			'karma-jasmine'
+			'karma-phantomjs-launcher',
+			'karma-jasmine',
+			'karma-coverage'
 		],
 
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
-		singleRun: false
+		singleRun: false,
+
+		coverageReporter: {
+			reporters: [
+				{type: 'lcov', dir:'test/coverage/'},
+				{type: 'text-summary', dir:'test/coverage/'}
+			]
+		}
 	});
 };
